@@ -1,0 +1,49 @@
+
+
+class Soldier:
+
+    def __init__(self, rank, name, age, gender):
+        self.rank = rank
+        self.name = name
+        self.age = age
+        self.gender = gender
+
+    def CutGrass(self):
+        print(f'{self.rank}{self.name} กำลังตัดหญ้าอยู่...')
+
+    def Train(self):
+        print('{}{} กำลังฝึกอยู่...'.format(self.rank, self.name))
+
+    def Shoot(self):
+        print('{}{} กำลังฝึกยิงปืน'.format(self.rank, self.name))
+
+    def Patrol(self):
+        print('{}{} กำลังลาดตระเวน'.format(self.rank, self.name))
+
+    def Ranking(self, newrank):
+        self.rank = newrank
+
+class HighRank(Soldier):
+
+    def __init__(self, rank, name, age, gender):
+        super().__init__(rank,name,age,gender)
+
+    def Paint(self, underrank, undername):
+        print('เห้ย!{}{} ไปทาสีบ้านให้หน่อย '.format(underrank, undername))
+
+    def Sleep(self):
+        print('{}{} กำลังหลับอยู่')
+
+if __name__ == '__main__':
+
+    soldier1 = Soldier('พลทหาร', 'ต้า', 26, 'ชาย')
+    highrank1 = HighRank('นายพล', 'ประหยัด', '56', 'ชาย')
+
+    soldier1.Train()
+    highrank1.Paint(soldier1.rank, soldier1.name)
+    print(f'ครับผม {highrank1.rank}{highrank1.name}!')
+    print(f'{soldier1.rank}{soldier1.name} กำลังทาสีบ้าน')
+    soldier1.CutGrass()
+    print('ทำดีมากนายได้เลื่อนยศ')
+    soldier1.Ranking('สิบตรี')
+    print(soldier1.rank)
